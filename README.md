@@ -109,6 +109,17 @@ WnsTile tile =  new WnsTileBuilder().bindingTemplateTileWideText03("Hello world"
 service.pushTile(channelUri, tile);
 ```
 
+Write the following to send multiple Tile notifications:
+```
+String channelUri = "yourChannelUri";
+WnsTile tile =  new WnsTileBuilder()
+	.bindingTemplateTileWideText03("Hello world")
+	.addBinding()
+	.bindingTemplateTileSquareBlock("Hello", "world")
+	.build();
+service.pushTile(channelUri, tile);
+```
+
 Write the following to send a Toast notification:
 ```
 String channelUri = "yourChannelUri";
@@ -122,7 +133,6 @@ String channelUri = "yourChannelUri";
 WnsRaw raw =  new WnsRawBuilder().stream("Hello world".getBytes()).build();
 service.pushRaw(channelUri, raw);
 ```
-
 
 ## Notification builders
 To create and customize notifications, you should use the following builders:
