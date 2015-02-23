@@ -1,5 +1,7 @@
 package ar.com.fernandospr.wns.model.builders;
 
+import java.util.ArrayList;
+
 import ar.com.fernandospr.wns.model.WnsBinding;
 import ar.com.fernandospr.wns.model.WnsTile;
 import ar.com.fernandospr.wns.model.WnsVisual;
@@ -25,12 +27,21 @@ public class WnsTileBuilder extends WnsAbstractBuilder<WnsTileBuilder> {
 		return this.tile.visual;
 	}
 	
+	public WnsTileBuilder addBinding() {
+		if (getVisual().bindings == null) {
+			getVisual().bindings = new ArrayList<WnsBinding>();
+		}
+		getVisual().bindings.add(new WnsBinding());
+		return getThis();
+	}
+	
 	@Override
 	protected WnsBinding getBinding() {
-		if (getVisual().binding == null) {
-			getVisual().binding = new WnsBinding();
+		if (getVisual().bindings == null) {
+			getVisual().bindings = new ArrayList<WnsBinding>();
+			getVisual().bindings.add(new WnsBinding());
 		}
-		return this.tile.visual.binding;
+		return getVisual().bindings.get(getVisual().bindings.size() - 1);
 	}
 		
 	public WnsTileBuilder bindingTemplateTileSquareBlock(String textField1, String textField2) {

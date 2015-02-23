@@ -1,5 +1,7 @@
 package ar.com.fernandospr.wns.model;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -26,5 +28,5 @@ public class WnsVisual {
 	public Boolean addImageQuery;
 	
 	@XmlElement(name = "binding")
-	public WnsBinding binding; 
+	public List<WnsBinding> bindings;
 }
